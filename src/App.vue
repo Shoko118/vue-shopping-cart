@@ -14,16 +14,18 @@ const page = ref("products");
 
 // functionality
 function addProduct(product) {
-  // the array of carts I want to push each of the element of the product
+  //  I want to push each of the element of the product in the array of carts
   return carts.value.push(product);
 }
 
 function navigateTo(navigate) {
-  page.value = navigate;
+  // the value of navigate line 36 I want to change the page value
+  return (page.value = navigate);
 }
 
 function removeProduct(index) {
-  carts.value.splice(index, 1);
+  // each of the array of carts I want to splice(starting value , removing element)
+  return carts.value.splice(index, 1);
 }
 </script>
 
@@ -36,7 +38,7 @@ function removeProduct(index) {
     </header>
 
     <ul>
-      <li v-if="page === 'products'" v-for="(product, i) in products" key="i">
+      <li v-if="page === 'products'" v-for="(product, i) in products" :key="i">
         <h2>The {{ product.name }}</h2>
         <h3>${{ product.price }}</h3>
         <p>Description: {{ product.description }}</p>
@@ -50,7 +52,7 @@ function removeProduct(index) {
         <h2 v-else>
           HERE ARE THE CARTS {{ carts.length }}
           <ul>
-            <li v-for="(cart, index) in carts" key="index">
+            <li v-for="(cart, index) in carts" :key="index">
               <h2>The {{ cart.name }}</h2>
               <h3>${{ cart.price }}</h3>
               <p>Description: {{ cart.description }}</p>
